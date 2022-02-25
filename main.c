@@ -25,7 +25,8 @@
 #include <string.h>
 
 int main(int argc, char *argv[]){
-    char buf[57];
+    char buf[60];
+    int i;
     char mainfunc[57] = "#include <stdio.h>\n\nint main(int argc, char *argv[]){\n\n}\n";
     int fd;
     
@@ -43,8 +44,10 @@ int main(int argc, char *argv[]){
     fd = open(argv[1], O_RDONLY);
 
     read(fd, buf, 57);
-
-    printf("%s", buf);
+    for (i = 0; i < 57; i ++) {
+        printf("%c", buf[i]);
+    }
+    printf("\n");
 
     close(fd);
 }
