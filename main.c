@@ -16,6 +16,7 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include <sys/types.h>
 #include <fcntl.h>
@@ -28,6 +29,10 @@ int main(int argc, char *argv[]){
     char mainfunc[57] = "#include <stdio.h>\n\nint main(int argc, char *argv[]){\n\n}\n";
     int fd;
     
+    if (argv[1] == NULL) {
+        printf("No filename given!\n");
+        exit(1);
+    }
     creat(argv[1], 0700);
 
     fd = open(argv[1], O_WRONLY);
