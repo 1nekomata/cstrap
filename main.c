@@ -55,14 +55,19 @@ int main(int argc, char *argv[]){
     char *mainfuncpart2 = "\nint main(int argc, char *argv[]){\n\n\n    return 0;\n}\n";
 
     char *mainfunc = NULL;
-    mainfunc = realloc(mainfunc, len + strlen(temp) + strlen(mainfuncpart1) + strlen(mainfuncpart2));
 
-    strcat(mainfunc, mainfuncpart1);
-    strcat(mainfunc, headers);
-    strcat(mainfunc, mainfuncpart2);
-    
+    if(argv[2] != NULL){
+        mainfunc = realloc(mainfunc, len + strlen(temp) + strlen(mainfuncpart1) + strlen(mainfuncpart2));
+
+        strcat(mainfunc, mainfuncpart1);
+        strcat(mainfunc, headers);
+        strcat(mainfunc, mainfuncpart2);
+    } else {
+        mainfunc = realloc(mainfunc, strlen("#include <stdio.h>\n\nint main(int argc, char *argv[]){\n\n\n    return 0;\n}\n"));
+        mainfunc = "#include <stdio.h>\n\nint main(int argc, char *argv[]){\n\n\n    return 0;\n}\n";
+    }
     int fd;
-    
+
     if (argv[1] == NULL) {
         printf("No filename given!\n");
         exit(1);
@@ -72,19 +77,25 @@ int main(int argc, char *argv[]){
     fd = open(argv[1], O_WRONLY);
 
     write(fd, mainfunc, strlen(mainfunc));
-    
+
     close(fd);
     fd = open(argv[1], O_RDONLY);
 
     buf = realloc(buf, strlen(mainfunc));
 
     read(fd, buf, strlen(mainfunc));
-    
+
     printf("%s", buf);
 
     free(buf);
-    free(mainfunc);
-    free(temp);
+
+    if(argv[2] != NULL){
+        free(mainfunc);
+    }
+
+    if(argv[2] != NULL){
+        free(temp);
+    }
 
     close(fd);
 }
