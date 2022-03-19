@@ -30,6 +30,11 @@ int main(int argc, char *argv[]){
 
     char *headers = NULL;
 
+    if (argv[1] == NULL){
+        printf("No filename specified!\n");
+        exit(1);
+    }
+
     for(int i = 2; i <= argc; i++){
         cnt++;
     }
@@ -68,10 +73,6 @@ int main(int argc, char *argv[]){
     }
     int fd;
 
-    if (argv[1] == NULL) {
-        printf("No filename given!\n");
-        exit(1);
-    }
     creat(argv[1], 0700);
 
     fd = open(argv[1], O_WRONLY);
