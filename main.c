@@ -84,6 +84,7 @@ int main(int argc, char *argv[]){
 
     free(buf);
     free(mainfunc);
+    free(temp);
 
     close(fd);
 }
