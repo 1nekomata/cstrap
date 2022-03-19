@@ -25,9 +25,9 @@
 #include <string.h>
 
 int main(int argc, char *argv[]){
-    char buf[60];
+    char *buf = NULL;
     int i;
-    char mainfunc[57] = "#include <stdio.h>\n\nint main(int argc, char *argv[]){\n\n}\n";
+    char *mainfunc = "#include <stdio.h>\n\nint main(int argc, char *argv[]){\n\n\nreturn 0;\n}\n";
     int fd;
     
     if (argv[1] == NULL) {
@@ -38,16 +38,19 @@ int main(int argc, char *argv[]){
 
     fd = open(argv[1], O_WRONLY);
 
-    write(fd, mainfunc, 57);
+    write(fd, mainfunc, strlen(mainfunc));
     
     close(fd);
     fd = open(argv[1], O_RDONLY);
 
-    read(fd, buf, 57);
-    for (i = 0; i < 57; i ++) {
-        printf("%c", buf[i]);
-    }
-    printf("\n");
+    buf = realloc(buf, strlen(mainfunc));
+
+    read(fd, buf, strlen(mainfunc));
+    
+    printf("%s", buf);
+
+    free(buf);
+    free(mainfunc);
 
     close(fd);
 }
