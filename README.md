@@ -15,4 +15,4 @@ Run `make build` and `sudo make install` to build and install cstrap.
 
 ## Usage
 
-`cstrap [filename]`
+`cstrap [filename] <header> <header> ...`

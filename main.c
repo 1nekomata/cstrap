@@ -26,8 +26,40 @@
 
 int main(int argc, char *argv[]){
     char *buf = NULL;
-    int i;
-    char *mainfunc = "#include <stdio.h>\n\nint main(int argc, char *argv[]){\n\n\nreturn 0;\n}\n";
+    int cnt = 0, len = 0;
+
+    char *headers = NULL;
+
+    for(int i = 2; i <= argc; i++){
+        cnt++;
+    }
+
+    for(int i = 2; i <= cnt; i++){
+        //printf("cnt = %d, i = %d\n", cnt, i);
+        //printf("argv[%d] = %s\n", i, argv[i]);
+        len += strlen(argv[i]) + strlen("#include <>\n") + 1;
+        //printf("len = %d\n", len);
+    }
+
+    headers = realloc(headers, len + 15);
+
+    char temp[100];
+
+    for(int i = 2; i < argc; i++){
+        sprintf(temp, "#include <%s>\n", argv[i]);
+        strcat(headers, temp);
+    }
+
+    char *mainfuncpart1 = "#include <stdio.h>\n";
+    char *mainfuncpart2 = "\nint main(int argc, char *argv[]){\n\n\n    return 0;\n}\n";
+
+    char *mainfunc = NULL;
+    mainfunc = realloc(mainfunc, len + strlen(temp) + strlen(mainfuncpart1) + strlen(mainfuncpart2));
+
+    strcat(mainfunc, mainfuncpart1);
+    strcat(mainfunc, headers);
+    strcat(mainfunc, mainfuncpart2);
+    
     int fd;
     
     if (argv[1] == NULL) {
