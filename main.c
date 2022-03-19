@@ -43,9 +43,10 @@ int main(int argc, char *argv[]){
 
     headers = realloc(headers, len + 15);
 
-    char temp[100];
+    char *temp = NULL;
 
     for(int i = 2; i < argc; i++){
+        temp = realloc(temp, strlen("#include <>\n") + strlen(argv[i]) + 1);
         sprintf(temp, "#include <%s>\n", argv[i]);
         strcat(headers, temp);
     }
