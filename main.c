@@ -65,8 +65,8 @@ int main(int argc, char *argv[]){
         strcat(mainfunc, mainfuncpart2);
 
     } else {
-        mainfunc = realloc(mainfunc, strlen("#include <stdio.h>\n\nint main(int argc, char *argv[]){\n\n\n    return 0;\n}\n"));
-        mainfunc = "#include <stdio.h>\n\nint main(int argc, char *argv[]){\n\n\n    return 0;\n}\n";
+        mainfunc = realloc(mainfunc, strlen("#include <stdio.h>\n\nint main(int argc, char *argv[]){\n\n\n\treturn 0;\n}\n"));
+        mainfunc = "#include <stdio.h>\n\nint main(int argc, char *argv[]){\n\n\n\treturn 0;\n}\n";
     }
 
     creat(argv[1], 0700);
