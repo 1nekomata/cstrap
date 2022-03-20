@@ -35,7 +35,7 @@ int main(int argc, char *argv[]){
     int cnt = 0, len = 0, fd;
     char *headers = NULL;
     char *mainfuncpart1 = "#include <stdio.h>\n";
-    char *mainfuncpart2 = "\nint main(int argc, char *argv[]){\n\n\n    return 0;\n}\n";
+    char *mainfuncpart2 = "\nint main(int argc, char *argv[]){\n\n\n\treturn 0;\n}\n";
     char *mainfunc = NULL;
 
     if(argv[2] != NULL){
