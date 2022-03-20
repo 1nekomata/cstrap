@@ -15,6 +15,9 @@ int main(int argc, char *argv[]){
 
 Run `make build && sudo make install` to build and install cstrap to the /usr/local/bin directory.
 
+Alternatively you can change the installation directory with install-usr-bin or install-bin to
+/usr/bin and /bin directories
+
 ## Usage
 
 `cstrap [filename] <header> <header> ...`
