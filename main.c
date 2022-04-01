@@ -34,8 +34,7 @@ int main(int argc, char *argv[]){
     char *buf = NULL;
     int cnt = 0, len = 0, fd;
     char *headers = NULL;
-    char *mainfuncpart1 = "#include <stdio.h>\n";
-    char *mainfuncpart2 = "\nint main(int argc, char *argv[]){\n\n\n\treturn 0;\n}\n";
+    char *mainfuncpart = "\nint main(int argc, char *argv[]){\n\n\n\treturn 0;\n}\n";
     char *mainfunc = NULL;
 
     if(argv[2] != NULL){
@@ -58,11 +57,10 @@ int main(int argc, char *argv[]){
             strcat(headers, temp);
         }
 
-        mainfunc = realloc(mainfunc, len + strlen(temp) + strlen(mainfuncpart1) + strlen(mainfuncpart2));
+        mainfunc = realloc(mainfunc, len + strlen(temp) + strlen(mainfuncpart));
 
-        strcat(mainfunc, mainfuncpart1);
         strcat(mainfunc, headers);
-        strcat(mainfunc, mainfuncpart2);
+        strcat(mainfunc, mainfuncpart);
 
     } else {
         mainfunc = realloc(mainfunc, strlen("int main(int argc, char *argv[]){\n\n\n\treturn 0;\n}\n"));
