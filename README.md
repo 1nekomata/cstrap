@@ -2,8 +2,6 @@
 
 cstrap creates a file that contains 
 ```
-#include <stdio.h>
-
 int main(int argc, char *argv[]){
 
 
@@ -15,8 +13,7 @@ int main(int argc, char *argv[]){
 
 Run `make build && sudo make install` to build and install cstrap to the /usr/local/bin directory.
 
-Alternatively you can change the installation directory with install-usr-bin or install-bin to
-/usr/bin and /bin directories
+PREFIX sets the Prefix of the installation Directory and BIN sets the directory that will contain cstrap
 
 ## Usage
 
