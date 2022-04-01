@@ -13,7 +13,7 @@ int main(int argc, char *argv[]){
 
 Run `make build && sudo make install` to build and install cstrap to the /usr/local/bin directory.
 
-PREFIX sets the Prefix of the installation Directory and BIN sets the directory that will contain cstrap
+PREFIX sets the installation Directory Prefix and BIN sets the directory that will contain cstrap
 
 ## Usage
 
