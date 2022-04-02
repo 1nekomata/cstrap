@@ -7,7 +7,7 @@ build:
 
 .PHONY install:
 install:
-        @cp cstrap ${PREFIX}/${BIN}
+	@cp cstrap ${PREFIX}/${BIN}
 
 .PHONY clean:
 clean:
